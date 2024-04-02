@@ -62,10 +62,13 @@ Create the following routes as efficiently as possible, using validation where a
 6. **Write a short answer in README.md**. In your `README.md`, write a short answer to the following questions:
 
    - Did you use the same type of route to update patient information as to update an employee's department?
+     - Yes, I used the `/patient/{id}` and `/employee/{id}`  route for both and I just change the method and the parameters
    - Why did you choose the selected strategy?
    - What are the advantages and disadvantages of the strategies you chose for creating these routes?
+      - For simplicity of the API. I wanted to have the routes easy to understand and escalate.
    - What is the cost-benefit between using `PUT` and `PATCH`?
-
+      - `PUT` require to set all the information again and you can override a value with a different one thinking was the same, however you can confirm the data was not wrong before.
+      - `PATCH` patch only changes the specifiy value so you don't need to worry about the rest of the data.
 <br>  
 
 ## FAQs

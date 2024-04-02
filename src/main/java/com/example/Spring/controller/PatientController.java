@@ -51,7 +51,7 @@ public class PatientController {
         patientService.addPatient(patient);
     }
 
-    @PutMapping("/products/{id}")
+    @PutMapping("/patient/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateProduct(@PathVariable int id, @RequestBody @Valid Patient patient) {
         patientService.updatePatient(id, patient);
