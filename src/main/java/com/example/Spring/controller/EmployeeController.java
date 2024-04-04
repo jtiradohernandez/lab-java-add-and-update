@@ -1,5 +1,6 @@
 package com.example.Spring.controller;
 
+import com.example.Spring.EmployeeDTO;
 import com.example.Spring.EmployeeStatus;
 import com.example.Spring.model.Employee;
 import com.example.Spring.model.Patient;
@@ -43,13 +44,15 @@ public class EmployeeController {
     }
 
     @PatchMapping("/employees/{id}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void partialUpdateStatus(@PathVariable(name="id") int employeeId, @RequestBody Optional<EmployeeStatus> status,@RequestBody Optional<String> department) {
-        if(status.isPresent()) {
-            employeeService.updateStatus(employeeId, EmployeeStatus.valueOf(String.valueOf(status)));
+    @ResponseStatus(value = HttpStatus.OK)
+    public Employee partialUpdateStatus(@PathVariable(name="id") int employeeId, @RequestBody EmployeeDTO employeeDTO) {
+        if(employeeDTO.getStatus() != null) {
+            return employeeService.updateStatus(employeeId, employeeDTO.getStatus());
         }
-        if(department.isPresent()){
-            employeeService.updateDepartment(employeeId, String.valueOf(department));
+        else if(employeeDTO.getDepartment() != null){
+            return employeeService.updateDepartment(employeeId, employeeDTO.getDepartment());
+        }else {
+            return null;
         }
     }
 }

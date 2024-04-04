@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.Set;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
+@DynamicUpdate
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
